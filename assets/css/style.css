@@ -54,3 +54,14 @@
 .col-lg-2 {
   margin-right: 30px;
 }
+
+  /* make the today forecast responsive by using media queries */ 
+
+  @media (max-width: 576px) {
+    #today {
+     display:flex;
+     flex-direction: column;
+     width: 220px;
+     height: 220px;
+    }
+  }
