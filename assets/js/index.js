@@ -44,6 +44,33 @@ $.ajax({
   success: function(data) {
     console.log(data)
     // Clear the forecast container
-    forecastContainer.html("");}
+    forecastContainer.html("");
     
     // Get the date of tomorrow
+     
+     var tomorrow = new Date();
+     tomorrow.setDate(tomorrow.getDate() + 1);
+     
+    // Find the index of the first element in the forecast data with a date equal to tomorrow
+       var index = 0;
+       for (let i = 0; i < data.list.length; i++) {
+       // Create a new Date object from the time in the list data
+       var date = new Date(data.list[i].dt_txt);
+       // Check if the current date is equal to tomorrow's date
+       if (date.toDateString() === tomorrow.toDateString()) {
+       // Set the index to the current iteration
+       index = i;
+       // Exit the loop
+       break;
+       }
+ }
+     // Loop through the list of forecast data starting from the index found above
+     for (let i = index; i < data.list.length && i < index + 40; i+=8) {
+         // Convert the temp to Celsius
+         var tempC1 = data.list[i].main.temp - 273.15;
+ 
+       // Create a new Date object from the time in the list data
+       var date = new Date(data.list[i].dt_txt);
+       // Format the date to a string in the local format
+       var dateString = date.toLocaleDateString();
+      
