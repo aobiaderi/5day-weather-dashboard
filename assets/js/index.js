@@ -118,5 +118,20 @@ $("#search-form").submit(function(event) {
     // Add the city to the list of searched cities
     searchedCities.push(city);
     // Store the list of searched cities in local storage
-    localStorage.setItem("searchedCities", JSON.stringify(searchedCities.slice(-4)));}})
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities.slice(-4)));
   }
+  // Clear the content of the history container
+  $("#history").empty();
+  // Append an unordered list to the history container
+  $("#history").append('<ul class="list-group">');
+  // Loop through the list of searched cities
+  for (let i = 0; i < searchedCities.length; i++) {
+    // If the current city value is not empty after trimming
+    if (searchedCities[i].trim() !== "") {
+      // Append a list item to the unordered list
+      $("#history").append('<li class="list-group-item">' + searchedCities[i] + '</li>');
+    }
+  }
+  // Close the unordered list
+  $("#history").append('</ul>');
+});
