@@ -102,3 +102,21 @@ try {
   // In case of any error, log it to the console
   console.error(error);
 }
+// Event handler for the submit event of the search form
+$("#search-form").submit(function(event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+
+  // Get the value of the search input and trim it
+  const city = $.trim($("#search-input").val());
+
+  // If the city value is empty, return without doing anything
+  if (!city) return;
+
+  // If the city is not already in the list of searched cities
+  if (!searchedCities.includes(city)) {
+    // Add the city to the list of searched cities
+    searchedCities.push(city);
+    // Store the list of searched cities in local storage
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities.slice(-4)));}})
+  }
