@@ -1,12 +1,16 @@
-const searchForm = document.getElementById("search-form");
-const searchInput = document.getElementById("search-input");
-const todayContainer = document.getElementById("today");
-const forecastContainer = document.getElementById("forecast");
-const historyContainer = document.getElementById("history");
-var APIKey = "87d845b0b6cf29baa1a73cc34b067a95";
+// Declare variables
+
+const searchForm = $("#search-form");
+const searchInput = $("#search-input");
+const todayContainer = $("#today");
+const forecastContainer = $("#forecast");
+const historyContainer = $("#history");
+var APIKey = "fa766ad2df19558f80ac998a4f5cbf45";
 
 // Function to handle form submit
-searchForm.addEventListener("submit", function(e) {
-e.preventDefault()});
+searchForm.submit(function(e) {
+  e.preventDefault();
+  // Get the city name from the input
+  const city = searchInput.val();})
     
 
