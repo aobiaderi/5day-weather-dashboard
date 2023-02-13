@@ -73,4 +73,21 @@ $.ajax({
        var date = new Date(data.list[i].dt_txt);
        // Format the date to a string in the local format
        var dateString = date.toLocaleDateString();
-      
+      // Append the forecast data to the forecast container
+      forecastContainer.append('<div class="col-lg-2">' + 
+      '<div class="card">' +
+        '<div class="card-body">' +
+          '<h5 class="card-title">' + dateString + '</h5>' +
+          // Add the weather icon
+          '<img src="https://openweathermap.org/img/w/' + data.list[i].weather[0].icon + '.png" alt="Weather icon">' +
+          '<p class="card-text">Temp: ' + tempC1.toFixed(2) + '°C' + '</p>' +
+          '<p class="card-text">Wind: ' + data.list[i].wind.speed  + 'KPH' + '</p>' +
+          '<p class="card-text">Humidity: ' + data.list[i].main.humidity + '%' +'</p>' +
+        '</div>' +
+      '</div>' +
+    '</div>');
+
+    }
+  }
+});
+});
