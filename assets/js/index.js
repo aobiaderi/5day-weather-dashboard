@@ -174,6 +174,21 @@ function getWeather(city) {
             <p class="weather-description">${currentData.weather[0].description}</p>
           `);
 
+                    // Loop through the 5-day forecast
+          for (let i = 0; i < 5; i++) {
+            // Display the forecast for each day
+            forecastContainer.append(`
+              <div class="col-lg-2">
+                <div class="card">
+                  <div class="card-body">
+                    <p class="date">${new Date(forecastData.list[i].dt * 1000).toLocaleDateString()}</p>
+                    <p class="temperature">${forecastData.list[i].main.temp}°C</p>
+                    <p class="weather-description">${forecastData.list[i].weather[0].description}</p>
+                  </div>
+                </div>
+              </div>
+            `);
+          }
         },
         error: function(error) {
           // In case of any error, log it to the console
