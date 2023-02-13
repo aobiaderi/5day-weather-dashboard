@@ -36,4 +36,14 @@ searchForm.submit(function(e) {
     }
   });
     
-})
+// Make an AJAX request to the weather API to get the forecast weather data
+$.ajax({
+  url: forecastWeatherURL,
+  type: "GET",
+  dataType: "json",
+  success: function(data) {
+    console.log(data)
+    // Clear the forecast container
+    forecastContainer.html("");}
+    
+    // Get the date of tomorrow
