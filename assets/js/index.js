@@ -33,7 +33,7 @@ searchForm.submit(function(e) {
       var tempC = data.main.temp - 273.15;
 
       // add weather contents to html
-      todayContainer.html('<h4>' + data.name +" (" + dateString + ")"+ '<img src="https://openweathermap.org/img/w/' + data.weather[0].icon + '.png" alt="Weather icon">' +'</h4>  <p>Temp: ' + tempC.toFixed(2) + '°C' + '<p>Wind: ' + data.wind.speed + 'KPH' + '</p> <p>Humidity: ' + data.main.humidity + '%'+ '</p> </div>');
+      todayContainer.html('<h4>' + data.name +" (" + dateString + ")"+ '<img src="https://openweathermap.org/img/w/' + data.weather[0].icon + '.png" alt="Weather icon">' +'</h4>  <p>Temp: ' + tempC.toFixed(2) + '°C' + '</p>'+'<p>Wind: ' + data.wind.speed + 'KPH' + '</p> <p>Humidity: ' + data.main.humidity + '%'+ '</p> </div>');
     }
   });
     
@@ -167,14 +167,16 @@ function getWeather(city) {
           todayContainer.empty();
           forecastContainer.empty();
           // Display the current conditions for the city
-          todayContainer.append(`
-            <h2 class="city-name">${currentData.name}, ${currentData.sys.country}</h2>
-            <p class="date">${new Date().toLocaleDateString()}</p>
-            <p class="temperature">${currentData.main.temp}°C</p>
-            <p class="weather-description">${currentData.weather[0].description}</p>
-          `);
 
-                    // Loop through the 5-day forecast
+          todayContainer.append(
+            '<h4 class="city-name">' + currentData.name + ' '+ new Date().toLocaleDateString() + '<img src="https://openweathermap.org/img/w/' + currentData.weather[0].icon + '.png" alt="Weather icon">' + '</h4>'+
+            '<p>Temp: ' + currentData.main.temp + '°C'+ '</p>' +
+            '<p> Wind: '+ currentData.wind.speed + 'KPH' +'</p>' + 
+            '<p> Humidity: ' + currentData.main.humidity + '%'+ '</p>'
+            );
+          
+
+          // Loop through the 5-day forecast
           for (let i = 0; i < 5; i++) {
             // Display the forecast for each day
             forecastContainer.append(`
@@ -202,3 +204,4 @@ function getWeather(city) {
     }
   });
 }
+
