@@ -137,6 +137,8 @@ $("#search-form").submit(function(event) {
   $("#history").append('</ul>');
 });
 
+
+
 $("#history").on("click", "li", function() {
   const city = $(this).text();
   // Call the function to retrieve current and future conditions for the selected city
@@ -177,7 +179,10 @@ function getWeather(city) {
           
 
           // Loop through the 5-day forecast
-          for (let i = 0; i < 5; i++) {
+          // for (let i = 0; i < 5; i++) {
+          for (let i = 0; i < 40; i+=8) {
+
+
             // Display the forecast for each day
             forecastContainer.append(`
               <div class="col-lg-2">
