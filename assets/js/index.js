@@ -13,6 +13,7 @@ searchForm.submit(function(e) {
   // Get the city name from the input
   const city = searchInput.val();
 
+
   // Build the URLs to query the database
   var currentWeatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey;
   var forecastWeatherURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey;
@@ -135,3 +136,54 @@ $("#search-form").submit(function(event) {
   // Close the unordered list
   $("#history").append('</ul>');
 });
+
+$("#history").on("click", "li", function() {
+  const city = $(this).text();
+  // Call the function to retrieve current and future conditions for the selected city
+  getWeather(city);
+});
+
+// Add function to display current and future weather forecasts when a city in the search history is clicked on.
+function getWeather(city) {
+  // API call to retrieve current conditions for the city
+  $.ajax({
+    url: "https://api.openweathermap.org/data/2.5/weather",
+    data: {
+      q: city,
+      units: "metric",
+      appid: APIKey
+    },
+    success: function(currentData) {
+      // API call to retrieve future conditions for the city
+      $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast",
+        data: {
+          q: city,
+          units: "metric",
+          appid: APIKey
+        },
+        success: function(forecastData) {
+          // Clear the content of the today and forecast sections
+          todayContainer.empty();
+          forecastContainer.empty();
+          // Display the current conditions for the city
+          todayContainer.append(`
+            <h2 class="city-name">${currentData.name}, ${currentData.sys.country}</h2>
+            <p class="date">${new Date().toLocaleDateString()}</p>
+            <p class="temperature">${currentData.main.temp}°C</p>
+            <p class="weather-description">${currentData.weather[0].description}</p>
+          `);
+
+        },
+        error: function(error) {
+          // In case of any error, log it to the console
+          console.error(error);
+        }
+      });
+    },
+    error: function(error) {
+      // In case of any error, log it to the console
+      console.error(error);
+    }
+  });
+}
