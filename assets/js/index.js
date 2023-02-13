@@ -91,3 +91,14 @@ $.ajax({
   }
 });
 });
+// Use local storage to save search history and display this on the browser
+
+let searchedCities = [];
+
+// Try to retrieve the list of searched cities from local storage
+try {
+  searchedCities = JSON.parse(localStorage.getItem("searchedCities")) || [];
+} catch (error) {
+  // In case of any error, log it to the console
+  console.error(error);
+}
