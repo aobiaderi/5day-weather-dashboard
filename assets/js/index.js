@@ -1,5 +1,4 @@
 // Declare variables
-
 const searchForm = $("#search-form");
 const searchInput = $("#search-input");
 const todayContainer = $("#today");
@@ -179,8 +178,7 @@ function getWeather(city) {
           
 
           // Loop through the 5-day forecast
-          // for (let i = 0; i < 5; i++) {
-          for (let i = 0; i < 40; i+=8) {
+          for (let i = 1; i < 40; i+=8) {
 
           // Display the forecast for each day
             
