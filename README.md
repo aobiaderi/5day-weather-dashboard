@@ -24,6 +24,6 @@ The following image shows the web application's appearance and functionality:
 
 ## Link
 
-Below is a link to the bootstrap-portfolio webpage:
+Below is a link to the 5day weather-dashboard:
 
 * [5day weather-dashboard](https://aobiaderi.github.io/5day-weather-dashboard/)
