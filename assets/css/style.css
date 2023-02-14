@@ -10,6 +10,7 @@
   margin-bottom: 10px;
   background-color: #f2f2f2;
   border: 3px solid #ccc;
+  cursor: pointer;
 }
 
 .weather-search {

@@ -178,14 +178,15 @@ function getWeather(city) {
           
 
           // Loop through the 5-day forecast
-          for (let i = 1; i < 40; i+=8) {
+        
+            for (let i = 0; i < 5; i++) {
 
           // Display the forecast for each day
             
           forecastContainer.append('<div class="col-lg-2">' +
             '<div class="card">' +
               '<div class="card-body">' +
-                '<h5 class= "date">' + new Date(forecastData.list[i].dt * 1000).toLocaleDateString() + '</h5>'+
+                '<h5 class= "date">' + new Date(new Date().getTime() + (24 * 60 * 60 * 1000 * (i + 1))).toLocaleDateString() + '</h5>'+
                 // Add the weather icon
                 '<img src="https://openweathermap.org/img/w/' + forecastData.list[i].weather[0].icon + '.png" alt="Weather icon">' +
                 '<p class="card-text">Temp: ' + forecastData.list[i].main.temp + '°C' + '</p>' +
@@ -196,8 +197,8 @@ function getWeather(city) {
           '</div>');
 
           }
-        }
-          ,
+        },
+
         error: function(error) {
           // In case of any error, log it to the console
           console.error(error);
