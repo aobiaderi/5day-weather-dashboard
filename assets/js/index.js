@@ -182,31 +182,34 @@ function getWeather(city) {
           // for (let i = 0; i < 5; i++) {
           for (let i = 0; i < 40; i+=8) {
 
+          // Display the forecast for each day
+            
+          forecastContainer.append('<div class="col-lg-2">' +
+            '<div class="card">' +
+              '<div class="card-body">' +
+                '<h5 class= "date">' + new Date(forecastData.list[i].dt * 1000).toLocaleDateString() + '</h5>'+
+                // Add the weather icon
+                '<img src="https://openweathermap.org/img/w/' + forecastData.list[i].weather[0].icon + '.png" alt="Weather icon">' +
+                '<p class="card-text">Temp: ' + forecastData.list[i].main.temp + '°C' + '</p>' +
+                '<p class="card-text">Wind: ' + forecastData.list[i].wind.speed  + 'KPH' + '</p>' +
+                '<p class="card-text">Humidity: ' + forecastData.list[i].main.humidity + '%' +'</p>' +
+              '</div> '+
+            '</div>'+
+          '</div>');
 
-            // Display the forecast for each day
-            forecastContainer.append(`
-              <div class="col-lg-2">
-                <div class="card">
-                  <div class="card-body">
-                    <p class="date">${new Date(forecastData.list[i].dt * 1000).toLocaleDateString()}</p>
-                    <p class="temperature">${forecastData.list[i].main.temp}°C</p>
-                    <p class="weather-description">${forecastData.list[i].weather[0].description}</p>
-                  </div>
-                </div>
-              </div>
-            `);
           }
-        },
+        }
+          ,
         error: function(error) {
           // In case of any error, log it to the console
           console.error(error);
         }
-      });
-    },
-    error: function(error) {
-      // In case of any error, log it to the console
-      console.error(error);
-    }
-  });
-}
+        });
+      },
+      error: function(error) {
+        // In case of any error, log it to the console
+        console.error(error);
+      }
+    });
+  }
 
