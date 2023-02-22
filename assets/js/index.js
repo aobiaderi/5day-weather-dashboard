@@ -140,8 +140,12 @@ $("#search-form").submit(function(event) {
   if (!searchedCities.includes(city)) {
     // Add the city to the list of searched cities
     searchedCities.push(city);
+    // Keep only the last 4 searches
+    searchedCities = searchedCities.slice(-4);
     // Store the list of searched cities in local storage
-    localStorage.setItem("searchedCities", JSON.stringify(searchedCities.slice(-4)));
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+     // Update the search history list
+     init();
   }
 });
 
